@@ -38,7 +38,7 @@ function Credit() {
        )}
         
         </table>
-      {/* <button onClick={Credit}></button> */}
+      <button onClick={Credit}></button>
     </div>
   );
 }
