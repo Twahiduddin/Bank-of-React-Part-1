@@ -37,12 +37,33 @@ function App() {
     });
   }, [transactionType])
 
+  const [username, setUsername] = useState('User');
+  const [bgColor, setBgColor] = useState('#FFFFFF');
+  const [textColor, setTextColor] = useState('#000000');
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  const updateProfile = () => {
+    setIsFormVisible(!isFormVisible);
+  }
+
   return (
-    <div className="App">
-      <div>
-        <p>Hello User</p>
-        
-        <p>{time}</p>
+    <div className="App" style={{backgroundColor: bgColor, color: textColor}}>
+        <div className="header">
+          <p>Hello {username}</p>
+          <button onClick={updateProfile}>{isFormVisible ? 'Done' : 'Customize Profile'}</button>
+
+          <div>
+            <p>{time}</p>
+          </div> 
+        </div>
+
+        {isFormVisible && 
+          <form>
+            <input type={'text'} placeholder={'Change my username'} value={username} onChange={e => setUsername(e.target.value)}/>
+            <input type={'text'} placeholder={'Hex for background color'} value={bgColor} onChange={e => setBgColor(e.target.value)}/>
+            <input type={'text'} placeholder={'Hex for text color'} value={textColor} onChange={e => setTextColor(e.target.value)}/>
+          </form>
+        }
 
         <h3>Select transaction type</h3>
         <select onChange={e => setTransactionType(e.target.value)}>
@@ -53,7 +74,6 @@ function App() {
         {transactions.map(transaction => (
           <Row key={transaction.id} transaction={transaction}/>
         ))}
-      </div>
     </div>
   );
 }
