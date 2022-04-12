@@ -38,16 +38,28 @@ function App() {
   }, [transactionType])
 
   const [username, setUsername] = useState('User');
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  const updateProfile = () => {
+    setIsFormVisible(!isFormVisible);
+  }
 
   return (
     <div className="App">
-      <div>
-        <div>
+        <div className='Header'>
           <p>Hello {username}</p>
+          <button onClick={updateProfile}>{isFormVisible ? 'Done' : 'Customize Profile'}</button>
 
+          <div>
+            <p>{time}</p>
+          </div>
         </div>
-        
-        <p>{time}</p>
+
+        {isFormVisible && 
+          <form>
+            <input type={'text'} placeholder={'Change my username'} value={username} onChange={e => setUsername(e.target.value)}/>
+          </form>
+        }
 
         <h3>Select transaction type</h3>
         <select onChange={e => setTransactionType(e.target.value)}>
@@ -58,7 +70,6 @@ function App() {
         {transactions.map(transaction => (
           <Row key={transaction.id} transaction={transaction}/>
         ))}
-      </div>
     </div>
   );
 }
