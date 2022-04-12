@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect, useRef} from 'react';
-import Row from './Row';
-import './App.css';
+import Row from './Row.js';
+import styles from './App.module.css'
 
 function App() {
   const getCurrentTime = () => {
@@ -47,10 +47,12 @@ function App() {
   }
 
   return (
-    <div className="App" style={{backgroundColor: bgColor, color: textColor}}>
-        <div className="header">
-          <p>Hello {username}</p>
-          <button onClick={updateProfile}>{isFormVisible ? 'Done' : 'Customize Profile'}</button>
+    <div className= {styles.app} style={{backgroundColor: bgColor, color: textColor}}>
+        <div className={styles.header}>
+          <div> 
+            <p>Hello {username}</p>
+            <button onClick={updateProfile}>{isFormVisible ? 'Done' : 'Customize Profile'}</button>
+          </div>
 
           <div>
             <p>{time}</p>
