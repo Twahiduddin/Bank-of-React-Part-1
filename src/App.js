@@ -39,6 +39,7 @@ function App() {
 
   const [username, setUsername] = useState('User');
   const [bgColor, setBgColor] = useState('#FFFFFF');
+  const [textColor, setTextColor] = useState('#000000');
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const updateProfile = () => {
@@ -46,7 +47,7 @@ function App() {
   }
 
   return (
-    <div className="App" style={{backgroundColor: bgColor}}>
+    <div className="App" style={{backgroundColor: bgColor, color: textColor}}>
         <div className="header">
           <p>Hello {username}</p>
           <button onClick={updateProfile}>{isFormVisible ? 'Done' : 'Customize Profile'}</button>
@@ -60,6 +61,7 @@ function App() {
           <form>
             <input type={'text'} placeholder={'Change my username'} value={username} onChange={e => setUsername(e.target.value)}/>
             <input type={'text'} placeholder={'Hex for background color'} value={bgColor} onChange={e => setBgColor(e.target.value)}/>
+            <input type={'text'} placeholder={'Hex for text color'} value={textColor} onChange={e => setTextColor(e.target.value)}/>
           </form>
         }
 
