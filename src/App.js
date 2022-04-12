@@ -37,10 +37,15 @@ function App() {
     });
   }, [transactionType])
 
+  const [username, setUsername] = useState('User');
+
   return (
     <div className="App">
       <div>
-        <p>Hello User</p>
+        <div>
+          <p>Hello {username}</p>
+
+        </div>
         
         <p>{time}</p>
 
