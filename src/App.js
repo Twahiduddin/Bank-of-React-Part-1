@@ -38,6 +38,7 @@ function App() {
   }, [transactionType])
 
   const [username, setUsername] = useState('User');
+  const [bgColor, setBgColor] = useState('#FFFFFF');
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const updateProfile = () => {
@@ -45,19 +46,20 @@ function App() {
   }
 
   return (
-    <div className="App">
-        <div className='Header'>
+    <div className="App" style={{backgroundColor: bgColor}}>
+        <div className="header">
           <p>Hello {username}</p>
           <button onClick={updateProfile}>{isFormVisible ? 'Done' : 'Customize Profile'}</button>
 
           <div>
             <p>{time}</p>
-          </div>
+          </div> 
         </div>
 
         {isFormVisible && 
           <form>
             <input type={'text'} placeholder={'Change my username'} value={username} onChange={e => setUsername(e.target.value)}/>
+            <input type={'text'} placeholder={'Hex for background color'} value={bgColor} onChange={e => setBgColor(e.target.value)}/>
           </form>
         }
 
