@@ -28,7 +28,13 @@ select{
     padding: 0 20px;
 }
 
-/* form{
+form{
     display: flex;
     flex-direction: column;
-} */
+}
+
+form input{
+    margin-bottom: 10px;
+    height: 30px;
+    padding: 0 20px;
+}
